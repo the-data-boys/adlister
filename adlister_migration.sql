@@ -31,11 +31,11 @@ CREATE TABLE categories
     PRIMARY KEY (id)
 );
 
-CREATE TABLE user_ad (
-                             quote_id INTEGER UNSIGNED NOT NULL,
-                             topic_id INTEGER UNSIGNED NOT NULL,
-                             FOREIGN KEY (quote_id) REFERENCES quotes(id),
-                             FOREIGN KEY (topic_id) REFERENCES topics(id)
+CREATE TABLE ad_category (
+                             ad_id INTEGER UNSIGNED NOT NULL,
+                             category_id INTEGER UNSIGNED NOT NULL,
+                             FOREIGN KEY (ad_id) REFERENCES ads(id),
+                             FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
 

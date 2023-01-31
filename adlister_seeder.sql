@@ -1,6 +1,10 @@
 USE adlister_db;
 
 TRUNCATE users;
+TRUNCATE ads;
+TRUNCATE categories;
+TRUNCATE ad_category;
+
 
 INSERT INTO users(email, password) VALUES
                                                ('joe@gmail', '11dszd1'),
@@ -17,18 +21,24 @@ VALUES ('Husky Puppies', 'Smol husky puppies.', (select id from users where emai
 INSERT INTO ads (title, description, users_id)
 VALUES ('Fast greyhound for sale', 'Fast boi.', (select id from users where email = 'sally@gmail'));
 
+INSERT INTO ads (title, description, users_id)
+VALUES ('Toyota Truck', 'It runs.', (select id from users where email = 'moe@gmail'));
+
+INSERT INTO ads (title, description, users_id)
+VALUES ('Loveseat', 'Black Leather.', (select id from users where email = 'moe@gmail'));
 
 INSERT INTO categories(name)
-VALUES ('Space and Time'),
-       ('Humor'),
-       ('Office Life'),
-       ('Hitchiker''s Guide to the Galaxy');
+VALUES ('Pets'),
+       ('Animals'),
+       ('Dogs'),
+       ('Tools'),
+       ('Trucks'),
+       ('Cars'),
+       ('Furniture');
 
-
-
-INSERT INTO quote_topic(quote_id, topic_id)
-VALUES (1, 2), (1, 3), (2, 4), (3, 1),
-       (3, 2), (3, 3), (3, 4), (4, 2), (5, 1);
+INSERT INTO ad_category(ad_id, category_id)
+VALUES (1, 1), (1, 2), (1, 3), (2, 1),
+       (2, 2), (2, 3), (3, 2), (3, 3), (4, 5), (4, 6), (5, 7);
 
 
 
