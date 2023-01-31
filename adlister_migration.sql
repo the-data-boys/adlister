@@ -1,24 +1,36 @@
-USE codeup_test_db;
+USE adlister_db;
 
-DROP TABLE IF EXISTS topics;
-CREATE TABLE topics
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+                         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                         email VARCHAR(50) NOT NULL,
+                         password  VARCHAR(50) NOT NULL,
+                         PRIMARY KEY (id)
+);
+
+
+
+DROP TABLE IF EXISTS ads;
+CREATE TABLE ads
+(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    users_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (users_id) REFERENCES users (id)
+);
+
+
+
+DROP TABLE IF EXISTS categories;
+CREATE TABLE categories
 (
     id   INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255),
+    name VARCHAR(100),
     PRIMARY KEY (id)
 );
-INSERT INTO topics(name)
-VALUES ('Space and Time'),
-       ('Humor'),
-       ('Office Life'),
-       ('Hitchiker''s Guide to the Galaxy');
-USE codeup_test_db;
-DROP TABLE IF EXISTS quotes;
-CREATE TABLE quotes
-(
-    id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    content   TEXT NOT NULL,
-    author_id INT UNSIGNED NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (author_id) REFERENCES authors (id)
-);
+
+
+
+
